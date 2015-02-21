@@ -1,0 +1,29 @@
+{
+  "name": "btpoe.table",
+  "version": "1.0.alpha1",
+  "homepage": "https://github.com/btpoe/table",
+  "authors": [
+    "Brandon Poe <brandonpoe@me.com>"
+  ],
+  "description": "Sometimes a table is the right tool for the job, but they aren't very mobile friendly. This little bit of js helps with that.",
+  "main": "src/*",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "jquery",
+    "tables",
+    "responsive"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">=1.9 <3.0.0"
+  }
+}

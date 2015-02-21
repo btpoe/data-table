@@ -1,19 +1,23 @@
+//
+// Table
+//
+
+
 // options
 $primary-color: #FF4136 !default;
+$stack: "only screen and (max-width: 40em)" !default;
+$unstack: "only screen and (min-width: 40.0625em)" !default;
 
-$stack: "only screen and (max-width: 48em)";
-$unstack: "only screen and (min-width: 48.063em)";
-
-.data-table {
+.Table {
 	font-size: 1rem;
 
 	&, tbody {
 		width: 100%;
 	}
 
-	th {
+	th, td:before {
 		color: $primary-color;
-		font-weight: 900;
+		font-weight: bold;
 		text-align: left;
 		text-transform: uppercase;
 		padding: 0 .5rem 1.5rem;
@@ -28,8 +32,8 @@ $unstack: "only screen and (min-width: 48.063em)";
 		tr {
 			display: table;
 			width: 100%;
-			border-top: 1px solid #eee;
 			margin: 1rem 0;
+			border-top: 1px solid #eee;
 
 			&:first-child {
 				display: none;
@@ -37,6 +41,7 @@ $unstack: "only screen and (min-width: 48.063em)";
 
 			&:nth-child(2) {
 				border-top: none;
+				margin-top: 0;
 			}
 		}
 
@@ -53,26 +58,26 @@ $unstack: "only screen and (min-width: 48.063em)";
 				content: attr(data-th);
 				width: 1px;
 				white-space: nowrap;
-				font-weight: 800;
-				color: $primary-color;
-				text-transform: uppercase;
 				text-align: right;
-				padding-top: 1rem;
-				padding-right: 1rem;
+				padding: 1rem 1rem 0;
 			}
 		}
 
-		.sm-cell {
+		&-cell {
 			display: table-cell;
-			padding-top: 1rem;
+			padding-top: .5rem;
 		}
 	}
 
 	@media #{$unstack} {
 
-		td {
-			padding: 1rem .5rem;
-			border-top: 1px solid #eee;
+		th, td {
+			padding: 1rem 1.5rem;
 		}
+
+		tr:nth-child(even) {
+			background: #eee;
+		}
+
 	}
 }

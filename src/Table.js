@@ -1,7 +1,7 @@
 ;
 (function ($) {
 
-	function DataTable(elem) {
+	function Table(elem) {
 
 		var table = this;
 		var $elem = $(elem);
@@ -9,8 +9,11 @@
 
 		var o = {
 			cellTag: 'span',
-			cellClass: 'sm-cell',
-			thAttr: 'data-th'
+			cellClass: 'Table-cell',
+			thAttr: 'data-th',
+			formatHeader: function(text) {
+				return text+':';
+			}
 		};
 
 		table.init = function (options) {
@@ -23,7 +26,7 @@
 
 			$elem.find('td').wrapInner('<' + o.cellTag + ' class="' + o.cellClass + '">');
 			$elem.find('th').each(function(i) {
-				$elem.find('td:nth-child('+(i+1)+')').attr(o.thAttr, $(this).text()+':');
+				$elem.find('td:nth-child('+(i+1)+')').attr(o.thAttr, o.formatHeader($(this).text()));
 			});
 
 			elem.dataTable = table;
@@ -37,12 +40,12 @@
 
 	$.fn.dataTable = function (options) {
 		return this.each(function () {
-			var opts = $(this).data('dataTable');
+			var opts = $(this).data('table');
 			if (typeof opts === 'string') {
 				opts = new Function('return {' + opts + '};')();
 			}
 			opts = $.extend({}, options, opts);
-			return new DataTable(this).init(opts);
+			return new Table(this).init(opts);
 		});
 	};
 
